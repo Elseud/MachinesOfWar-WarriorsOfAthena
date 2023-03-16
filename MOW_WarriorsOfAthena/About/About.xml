@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>Machines of War: Warriors of Athena</name>
+	<author>Elseud</author>
+	<supportedVersions>
+	  <li>1.4</li>
+    </supportedVersions>
+    <packageId>EL.MOW_WOA</packageId>
+    <description>todo</description>
+</ModMetaData>

@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Biotech</li>
+		</mods>
+
+    <match Class="PatchOperationSequence">
+			<success>Normal</success>
+			<operations>
+
+		<!-- Bombardier -->
+
+        <li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName = "MOW_Mech_Bombardier"]/statBases</xpath>
+					<value>
+            <BandwidthCost>8</BandwidthCost>
+            <MechEnergyLossPerHP>0.12</MechEnergyLossPerHP>
+					</value>
+				</li>
+		
+		    <li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName = "MOW_Mech_Bombardier"]/race</xpath>
+					<value>
+            <mechWeightClass>UltraHeavy</mechWeightClass>
+					</value>
+				</li>
+
+        <li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName = "MOW_Mech_Bombardier"]/race/lifeStageAges</xpath>
+					<value>
+            <li>
+              <def>MechanoidFullyFormed</def>
+              <minAge>100</minAge>
+              <soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
+              <soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
+              <soundCall>Pawn_Mech_Centipede_Call</soundCall>
+            </li>
+					</value>
+				</li>
+
+        <li Class="PatchOperationAdd">
+					<xpath>/Defs/PawnKindDef[defName = "MOW_Mech_Bombardier"]/lifeStages</xpath>
+          <order>Prepend</order>
+					<value>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/BombardierClean/BombardierClean</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Bombardier</maskPath>
+                          <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>4.1</drawSize>
+                <shadowData>
+                  <volume>(0.8, 1, 0.8)</volume>
+                </shadowData>
+              </bodyGraphicData>
+            </li>
+					</value>
+				</li>
+
+        <li Class="PatchOperationAdd">
+					<xpath>/Defs/PawnKindDef[defName = "MOW_Mech_Bombardier"]</xpath>
+					<value>
+            <techHediffsChance>1</techHediffsChance>
+					</value>
+				</li>
+
+		<li Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName = "ResurrectUltraheavyMech"]/fixedIngredientFilter/thingDefs</xpath>
+            <value>
+                  <li>Corpse_MOW_Mech_Bombardier</li>
+            </value>
+        </li>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName = "LargeMechGestator"]/recipes</xpath>
+            <value>
+				        <li>Bombardier</li>
+            </value>
+        </li>
+        
+        <li Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+
+		        <RecipeDef ParentName="SuperHeavyMechanoidRecipe">
+              <defName>Bombardier</defName>
+              <label>gestate bombardier</label>
+              <description>Gestate a bombardier mech.</description>
+              <gestationCycles>12</gestationCycles>
+              <researchPrerequisite>UltraMechtech</researchPrerequisite>
+              <ingredients Inherit="False">
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>Steel</li>
+                    </thingDefs>
+                  </filter>
+                  <count>300</count>
+                </li>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>Plasteel</li>
+                    </thingDefs>
+                  </filter>
+                  <count>300</count>
+                </li>
+              <li>
+                  <filter>
+                    <thingDefs>
+                      <li>ComponentSpacer</li>
+                    </thingDefs>
+                  </filter>
+                  <count>2</count>
+                </li>
+				        <li>
+                  <filter>
+                    <thingDefs>
+                      <li>ComponentIndustrial</li>
+                    </thingDefs>
+                  </filter>
+                  <count>4</count>
+                </li>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>SubcoreHigh</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+				        <li>
+                  <filter>
+                    <thingDefs>
+                      <li>SubcoreRegular</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+				        <li>
+                  <filter>
+                    <thingDefs>
+                      <li>SignalChip</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <products>
+                <MOW_Mech_Bombardier>1</MOW_Mech_Bombardier>
+              </products>
+              <descriptionHyperlinks>
+                <ThingDef>MOW_Mech_Bombardier</ThingDef>
+              </descriptionHyperlinks>
+            </RecipeDef>
+          </value>
+        </li>
+			</operations>
+		</match>
+  </Operation>
+</Patch>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	
+  <ThingDef ParentName="BaseMechanoidWalker">
+    <defName>MOW_Mech_Bombardier</defName>
+    <label>bombardier</label>
+    <description>Large, quadrapedal mechanoids specialised as a mobile artillery platform. Boasting a fearsome array of long-range weaponry, Bombardiers are as formidable during an open field battle as they are besieging fortifications - their needlers laying down supressive fire, while the howitzer mounted on their backs rains death from above. However, for all their ranged firepower, they are very vulnurable up close - the relatively thin armor and cumbersome nature of their giant bodies making them ripe targets for short range bruisers.</description>
+    <statBases>
+      <MoveSpeed>1.7</MoveSpeed>
+      <ArmorRating_Blunt>0.21</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.50</ArmorRating_Sharp>
+      <PsychicSensitivity>0.5</PsychicSensitivity>
+    </statBases>
+    <tools>
+      <li>
+        <label>front left leg</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>15.0</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>FrontLeftLeg</linkedBodyPartsGroup>
+        <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+      </li>
+      <li>
+        <label>front right leg</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>15.0</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>FrontRightLeg</linkedBodyPartsGroup>
+        <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+    </tools>
+    <race>
+      <body>MOW_MechanicalBombardier</body>
+      <baseBodySize>3.5</baseBodySize>
+      <baseHealthScale>3.1</baseHealthScale>
+      <soundMeleeHitPawn>Pawn_Melee_MechanoidBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_MechanoidBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
+      <lifeStageAges Inherit="False">
+        <li>
+          <def>MechanoidFullyFormed</def>
+          <minAge>0</minAge>
+          <soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
+		  <soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
+		  <soundCall>Pawn_Mech_Centipede_Call</soundCall>
+        </li>
+      </lifeStageAges>
+    </race>
+	<comps>
+      <li Class="CompProperties_TurretGun">
+        <turretDef>MOW_Artillery_ChargeHowitzer</turretDef>
+        <angleOffset>-90</angleOffset>
+      </li>
+    </comps>
+	<butcherProducts>
+		<Steel>25</Steel>
+		<Plasteel>25</Plasteel>
+		<ComponentIndustrial>6</ComponentIndustrial>
+	</butcherProducts>
+  </ThingDef>
+  
+  <PawnKindDef ParentName="BaseMechanoidKind">
+    <defName>MOW_Mech_Bombardier</defName>
+    <label>bombardier</label>
+    <race>MOW_Mech_Bombardier</race>
+    <combatPower>500</combatPower>
+    <lifeStages>
+	    <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Mechanoid/Bombardier/Bombardier</texPath>
+          <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Bombardier</maskPath>
+          <shaderType>CutoutWithOverlay</shaderType>
+		      <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>3.9</drawSize>
+          <shadowData>
+            <volume>(0.8, 0.8, 0.8)</volume>
+          </shadowData>
+        </bodyGraphicData>
+      </li>
+    </lifeStages>
+    <techHediffsMoney>9999~9999</techHediffsMoney>
+    <weaponMoney>9999~9999</weaponMoney>
+    <weaponTags>
+        <li>MOW_MechanoidGunLongRange</li>
+    </weaponTags>
+  </PawnKindDef>
+
+</Defs>

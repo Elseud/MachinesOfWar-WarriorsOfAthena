@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Needler -->
+  <ThingDef ParentName="BaseGun" Name="NeedleGunBase">
+    <defName>MOW_Gun_Needler</defName>
+    <label>needler</label>
+    <description>A triple-barreled, burst fire cousin of mechanoid needle gun. While it retains the range of its single-shot cousin, the recoil of continous fire make it ill-suited for sniping, instead being used for long-distance target supression.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/Needler</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.2</drawSize>
+    </graphicData>
+    <tradeability>None</tradeability>
+    <destroyOnDrop>true</destroyOnDrop>
+    <relicChance>0</relicChance>
+    <statBases>
+      <MarketValue>1800</MarketValue>
+      <Mass>4</Mass>
+      <AccuracyTouch>0.30</AccuracyTouch>
+      <AccuracyShort>0.50</AccuracyShort>
+      <AccuracyMedium>0.60</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+    </statBases>
+    <weaponTags>
+      <li>MOW_MechanoidGunLongRange</li>
+    </weaponTags>
+    <weaponClasses>
+      <li>RangedHeavy</li>
+      <li>LongShots</li>
+    </weaponClasses>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_NeedleGun</defaultProjectile>
+        <warmupTime>2.8</warmupTime>
+        <range>44.9</range>
+		<burstShotCount>3</burstShotCount>
+        <soundCast>Shot_NeedleGun</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.8</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+  <!-- Charge Howitzer -->
+  <ThingDef ParentName="BaseBullet">
+    <defName>MOW_Bullet_Shell_ChargeHowitzer</defName>
+    <label>charge shell</label>
+    <graphicData>
+      <texPath>Things/Projectile/Shell_ChargeHowitzer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	    <drawSize>2</drawSize>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <speed>40</speed>
+      <damageDef>Bomb</damageDef>
+	  <flyOverhead>true</flyOverhead>
+	  <damageAmountBase>30</damageAmountBase>
+      <explosionRadius>2.9</explosionRadius>
+      <ai_IsIncendiary>true</ai_IsIncendiary>
+	    <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseArtilleryWeapon">
+    <defName>MOW_Artillery_ChargeHowitzer</defName>
+    <label>charge howitzer</label>
+    <description>A relatively short-range artillery piece typically found mounted on Bombardier mechanoids. Internal fabricator, autoloader and targetting AI allow it to lob charge shells completely independently to its carrier. Its magnetic acceleration rails make fired projectiles somewhat faster and more accurate than those shot out of regular mortars.</description>
+    <tradeability>None</tradeability>
+    <destroyOnDrop>true</destroyOnDrop>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/ChargeHowitzer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>2</drawSize>
+    </graphicData>
+    <statBases>
+      <Mass>26</Mass>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>MOW_Bullet_Shell_ChargeHowitzer</defaultProjectile>
+        <minRange>7.9</minRange>
+        <range>49.9</range>
+		    <forcedMissRadius>7</forcedMissRadius>
+        <ai_AvoidFriendlyFireRadius>3</ai_AvoidFriendlyFireRadius>
+		    <defaultCooldownTime>4</defaultCooldownTime>
+        <soundCast>MOW_Shot_ChargeHowitzer</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+		    <requireLineOfSight>false</requireLineOfSight>
+        <linkedBodyPartsGroup>MOW_TurretNest</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+		    <ticksBetweenBurstShots>600</ticksBetweenBurstShots>
+		    <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <modExtensions>
+      <li Class="AthenaFramework.TurretRoofBlocked" />
+    </modExtensions>
+  </ThingDef>
+  
+</Defs>
